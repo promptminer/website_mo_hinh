@@ -1,0 +1,32 @@
+<?php
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
+// đường dẫn dùng $_GET
+// domain.com?name=Tính&age=18&address=Cần%20Thơ
+// $_GET['name'] giá trị sẽ là Tính
+// $_GET['age'] giá trị sẽ là 18
+// $_GET['address'] giá trị sẽ là Cần Thơ
+// echo $_GET['address'];
+
+require "Views/layouts/header.php";
+
+if(isset($_GET['pages']) && !empty($_GET['pages'])){
+    switch($_GET['pages']){
+        case "home":
+            require "Views/pages/home.php";
+            break;
+        case "productDetail":
+            require "Views/pages/productDetail.php";
+            break;
+
+        default:
+            echo "404";
+            break;
+    }
+}
+
+
+
+require "Views/layouts/footer.php";
+// include, include_once, require, require_once
